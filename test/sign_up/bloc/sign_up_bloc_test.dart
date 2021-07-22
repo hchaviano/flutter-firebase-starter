@@ -8,6 +8,7 @@ import 'package:mockito/mockito.dart';
 
 class MockAuthService extends Mock implements AuthService {}
 
+// ignore: must_be_immutable
 class MockUser extends Mock implements User {}
 
 void main() {
