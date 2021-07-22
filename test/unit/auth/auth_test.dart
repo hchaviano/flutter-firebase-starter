@@ -120,8 +120,8 @@ void main() async {
   });
 
   group('Google Sign in /', () {
+    final _googleSignInService = MockGoogleSignInService();
     test('Success', () async {
-      final _googleSignInService = MockGoogleSignInService();
       final authService = FirebaseAuthService(
         authService: auth,
         signInServiceFactory: signInServiceFactory,
