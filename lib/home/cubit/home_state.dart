@@ -9,6 +9,6 @@ class HomeState extends Equatable {
   List<Object> get props => [pageIndex];
 
   HomeState copyWith({int pageIndex}) {
-    return HomeState(pageIndex: pageIndex);
+    return HomeState(pageIndex: pageIndex ?? this.pageIndex);
   }
 }
