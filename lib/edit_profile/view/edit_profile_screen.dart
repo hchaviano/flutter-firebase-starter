@@ -267,16 +267,15 @@ class _UpdateProfileButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = context.select((EditProfileBloc bloc) => bloc.state.status);
-    final fieldStatus =
-        context.select((EditProfileBloc bloc) => bloc.state.fieldsStatus);
+    final fieldsChanged =
+        context.select((EditProfileBloc bloc) => bloc.state.fieldsChanged);
     final isInvalid = status == EditProfileStatus.invalid;
-    final fieldsUnchanged = fieldStatus == EditProfileFields.unchanged;
 
     return Button(
       backgroundColor:
-          (isInvalid || fieldsUnchanged) ? AppColor.grey : AppColor.blue,
+          (isInvalid || !fieldsChanged) ? AppColor.grey : AppColor.blue,
       text: Strings.editProfile,
-      onTap: (isInvalid || fieldsUnchanged)
+      onTap: (isInvalid || !fieldsChanged)
           ? null
           : () {
               context
