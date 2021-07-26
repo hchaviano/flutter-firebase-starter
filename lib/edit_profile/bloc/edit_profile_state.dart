@@ -11,7 +11,6 @@ enum EditProfileStatus {
 
 class EditProfileState extends Equatable {
   final EditProfileStatus status;
-  final bool fieldsChanged;
   final User user;
   final FirstName firstName;
   final LastName lastName;
@@ -19,7 +18,6 @@ class EditProfileState extends Equatable {
 
   const EditProfileState({
     @required EditProfileStatus this.status,
-    bool this.fieldsChanged,
     this.user,
     this.firstName,
     this.lastName,
@@ -29,7 +27,6 @@ class EditProfileState extends Equatable {
   EditProfileState.initial()
       : this(
           status: EditProfileStatus.initial,
-          fieldsChanged: false,
           firstName: FirstName.pure(),
           lastName: LastName.pure(),
           imageURL: '',
@@ -37,7 +34,6 @@ class EditProfileState extends Equatable {
 
   EditProfileState copyWith({
     EditProfileStatus status,
-    bool fieldsChanged,
     User user,
     FirstName firstName,
     LastName lastName,
@@ -45,7 +41,6 @@ class EditProfileState extends Equatable {
   }) {
     return EditProfileState(
       status: status ?? this.status,
-      fieldsChanged: fieldsChanged ?? this.fieldsChanged,
       user: user ?? this.user,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
