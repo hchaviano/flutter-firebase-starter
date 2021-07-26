@@ -23,13 +23,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
         _authService = authService,
         _storageService = storageService,
         _imageService = imageService,
-        super(
-          EditProfileState(
-            status: EditProfileStatus.initial,
-            firstName: FirstName.pure(),
-            lastName: LastName.pure(),
-          ),
-        );
+        super(EditProfileState.initial());
 
   final AuthService _authService;
   final StorageService _storageService;
@@ -61,13 +55,13 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       final image = user.imageUrl;
 
       yield state.copyWith(
-        user: user,
-        firstName: firstName,
-        lastName: lastName,
-        imageURL: image,
-        status:
-            _status(firstName: firstName, lastName: lastName, imageURL: image),
-      );
+          user: user,
+          firstName: firstName,
+          lastName: lastName,
+          imageURL: image,
+          status: _status(
+              firstName: firstName, lastName: lastName, imageURL: image),
+          fieldsStatus: EditProfileFields.unchanged);
     } on Exception {
       yield state.copyWith(status: EditProfileStatus.failure);
     }
@@ -79,9 +73,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
     final firstName = FirstName.dirty(event.firstName);
 
     yield state.copyWith(
-      firstName: firstName,
-      status: _status(firstName: firstName),
-    );
+        firstName: firstName,
+        status: _status(firstName: firstName),
+        fieldsStatus: EditProfileFields.changed);
   }
 
   Stream<EditProfileState> _mapEditProfileLastNameChangedToState(
@@ -90,9 +84,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
     final lastName = LastName.dirty(event.lastName);
 
     yield state.copyWith(
-      lastName: lastName,
-      status: _status(lastName: lastName),
-    );
+        lastName: lastName,
+        status: _status(lastName: lastName),
+        fieldsStatus: EditProfileFields.changed);
   }
 
   Stream<EditProfileState> _mapEditProfilePhotoUpdatedToState(
@@ -115,9 +109,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       }
 
       yield state.copyWith(
-        imageURL: file.path,
-        status: _status(imageURL: file.path),
-      );
+          imageURL: file.path,
+          status: _status(imageURL: file.path),
+          fieldsStatus: EditProfileFields.changed);
     } on Exception {
       yield state.copyWith(status: EditProfileStatus.failure);
     }

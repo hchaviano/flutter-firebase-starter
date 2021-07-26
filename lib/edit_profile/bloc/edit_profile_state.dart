@@ -9,8 +9,11 @@ enum EditProfileStatus {
   invalid,
 }
 
+enum EditProfileFields { initial, unchanged, changed }
+
 class EditProfileState extends Equatable {
   final EditProfileStatus status;
+  final EditProfileFields fieldsStatus;
   final User user;
   final FirstName firstName;
   final LastName lastName;
@@ -18,14 +21,25 @@ class EditProfileState extends Equatable {
 
   const EditProfileState({
     @required EditProfileStatus this.status,
+    @required EditProfileFields this.fieldsStatus,
     this.user,
     this.firstName,
     this.lastName,
     this.imageURL,
   }) : assert(status != null);
 
+  EditProfileState.initial()
+      : this(
+          status: EditProfileStatus.initial,
+          fieldsStatus: EditProfileFields.initial,
+          firstName: FirstName.pure(),
+          lastName: LastName.pure(),
+          imageURL: '',
+        );
+
   EditProfileState copyWith({
     EditProfileStatus status,
+    EditProfileFields fieldsStatus,
     User user,
     FirstName firstName,
     LastName lastName,
@@ -33,6 +47,7 @@ class EditProfileState extends Equatable {
   }) {
     return EditProfileState(
       status: status ?? this.status,
+      fieldsStatus: fieldsStatus ?? this.fieldsStatus,
       user: user ?? this.user,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
