@@ -25,12 +25,14 @@ class _DetermineAccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoginBloc>().state;
-
-    if (state.status == LoginStatus.initial) return const SplashScreen();
-
-    if (state.status == LoginStatus.loggedIn) return const HomeScreen();
-
-    return const LoginScreen();
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state.status == LoginStatus.loggedIn)
+          Navigator.of(context).pushReplacement(HomeScreen.route());
+        else
+          Navigator.of(context).pushReplacement(LoginScreen.route());
+      },
+      child: const SplashScreen(),
+    );
   }
 }
