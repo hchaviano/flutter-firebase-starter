@@ -38,8 +38,9 @@ class _HomePages extends StatelessWidget {
       backgroundColor: AppColor.lightGrey,
       bottomNavigationBar: StarterBottomNavigationBar(
         index: pageIndex,
-        updateIndex: (int newIndex) =>
-            context.read<HomeCubit>().updatePageIndex(newIndex),
+        updateIndex: (int newIndex) {
+          context.read<HomeCubit>().updatePageIndex(newIndex);
+        },
       ),
     );
   }
