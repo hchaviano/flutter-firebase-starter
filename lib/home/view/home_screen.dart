@@ -9,17 +9,15 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
 
   static Route route() {
-    return MaterialPageRoute<void>(
-      builder: (_) => BlocProvider<HomeCubit>(
-        create: (_) => HomeCubit(),
-        child: const HomeScreen(),
-      ),
-    );
+    return MaterialPageRoute<void>(builder: (_) => const HomeScreen());
   }
 
   @override
   Widget build(BuildContext context) {
-    return const _HomePages();
+    return BlocProvider<HomeCubit>(
+      create: (_) => HomeCubit(),
+      child: const _HomePages(),
+    );
   }
 }
 
