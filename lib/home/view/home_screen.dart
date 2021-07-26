@@ -32,7 +32,7 @@ class _HomePages extends StatelessWidget {
         context.select((HomeCubit cubit) => cubit.state.pageIndex);
     final _screens = [
       const EmployeesScreen(),
-      const ProfileScreen(),
+      const UserProfileScreen(),
     ];
     return Scaffold(
       body: _screens[pageIndex],
