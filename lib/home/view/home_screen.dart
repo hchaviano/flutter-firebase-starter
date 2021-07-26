@@ -18,15 +18,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const _HomePages();
-  }
-}
-
-class _HomePages extends StatelessWidget {
-  const _HomePages({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     final pageIndex =
         context.select((HomeCubit cubit) => cubit.state.pageIndex);
     final _screens = [
