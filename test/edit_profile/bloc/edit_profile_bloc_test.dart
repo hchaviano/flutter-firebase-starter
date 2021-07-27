@@ -145,7 +145,7 @@ void main() {
               firstName: FirstName.pure(),
               lastName: LastName.pure(),
               user: null,
-              imageURL: ''),
+              imageURL: '',),
           EditProfileState(
               status: EditProfileStatus.failure,
               firstName: FirstName.pure(),
