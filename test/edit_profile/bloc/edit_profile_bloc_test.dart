@@ -151,7 +151,7 @@ void main() {
               firstName: FirstName.pure(),
               lastName: LastName.pure(),
               user: null,
-              imageURL: ''),
+              imageURL: '',),
         ],
       );
     });
