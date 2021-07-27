@@ -103,7 +103,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       }
 
       yield state.copyWith(
-          imageURL: file.path, status: _status(imageURL: file.path));
+          imageURL: file.path, status: _status(imageURL: file.path),);
     } on Exception {
       yield state.copyWith(status: EditProfileStatus.failure);
     }
