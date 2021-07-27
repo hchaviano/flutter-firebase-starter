@@ -289,6 +289,7 @@ class _AppBar extends CustomAppBar {
   @override
   Widget build(BuildContext context) {
     final status = context.select((EditProfileBloc bloc) => bloc.state.status);
+    
     return CustomAppBar(
       title: AppLocalizations.of(context).editProfile,
       suffixWidget: status == EditProfileStatus.loading
