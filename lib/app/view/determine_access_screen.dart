@@ -29,8 +29,7 @@ class _DetermineAccessScreen extends StatelessWidget {
       listener: (context, state) {
         if (state.status == LoginStatus.loggedIn) {
           Navigator.of(context).pushReplacement(HomeScreen.route());
-        }
-        else {
+        } else {
           Navigator.of(context).pushReplacement(LoginScreen.route());
         }
       },
