@@ -174,7 +174,7 @@ void main() {
               firstName: FirstName.dirty(firstName),
               lastName: LastName.pure(),
               user: null,
-              imageURL: ''),
+              imageURL: '',),
         ],
       );
 
