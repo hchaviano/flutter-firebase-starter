@@ -71,7 +71,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
     final firstName = FirstName.dirty(event.firstName);
 
     yield state.copyWith(
-        firstName: firstName, status: _status(firstName: firstName));
+        firstName: firstName, status: _status(firstName: firstName),);
   }
 
   Stream<EditProfileState> _mapEditProfileLastNameChangedToState(
