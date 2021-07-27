@@ -223,7 +223,7 @@ void main() {
               firstName: FirstName.pure(),
               lastName: LastName.dirty(lastName),
               user: null,
-              imageURL: ''),
+              imageURL: '',),
         ],
       );
 
