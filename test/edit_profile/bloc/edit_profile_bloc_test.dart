@@ -115,7 +115,6 @@ void main() {
               status: EditProfileStatus.loading,
               firstName: FirstName.pure(),
               lastName: LastName.pure(),
-              user: null,
               imageURL: ''),
           EditProfileState(
             status: EditProfileStatus.invalid,
@@ -141,17 +140,17 @@ void main() {
         },
         expect: () => <EditProfileState>[
           EditProfileState(
-              status: EditProfileStatus.loading,
-              firstName: FirstName.pure(),
-              lastName: LastName.pure(),
-              user: null,
-              imageURL: '',),
+            status: EditProfileStatus.loading,
+            firstName: FirstName.pure(),
+            lastName: LastName.pure(),
+            imageURL: '',
+          ),
           EditProfileState(
-              status: EditProfileStatus.failure,
-              firstName: FirstName.pure(),
-              lastName: LastName.pure(),
-              user: null,
-              imageURL: '',),
+            status: EditProfileStatus.failure,
+            firstName: FirstName.pure(),
+            lastName: LastName.pure(),
+            imageURL: '',
+          ),
         ],
       );
     });
@@ -170,11 +169,11 @@ void main() {
         },
         expect: () => <EditProfileState>[
           EditProfileState(
-              status: EditProfileStatus.invalid,
-              firstName: FirstName.dirty(firstName),
-              lastName: LastName.pure(),
-              user: null,
-              imageURL: '',),
+            status: EditProfileStatus.invalid,
+            firstName: FirstName.dirty(firstName),
+            lastName: LastName.pure(),
+            imageURL: '',
+          ),
         ],
       );
 
@@ -219,11 +218,11 @@ void main() {
         },
         expect: () => <EditProfileState>[
           EditProfileState(
-              status: EditProfileStatus.invalid,
-              firstName: FirstName.pure(),
-              lastName: LastName.dirty(lastName),
-              user: null,
-              imageURL: '',),
+            status: EditProfileStatus.invalid,
+            firstName: FirstName.pure(),
+            lastName: LastName.dirty(lastName),
+            imageURL: '',
+          ),
         ],
       );
 
@@ -246,7 +245,6 @@ void main() {
         expect: () => <EditProfileState>[
           EditProfileState(
             status: EditProfileStatus.valid,
-            user: null,
             firstName: FirstName.dirty(firstName),
             lastName: LastName.dirty(lastName),
             imageURL: imageUrl,
