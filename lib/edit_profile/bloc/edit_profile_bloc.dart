@@ -55,11 +55,12 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       final image = user.imageUrl;
 
       yield state.copyWith(
-          user: user,
-          firstName: firstName,
-          lastName: lastName,
-          imageURL: image,
-          status: EditProfileStatus.invalid,);
+        user: user,
+        firstName: firstName,
+        lastName: lastName,
+        imageURL: image,
+        status: EditProfileStatus.invalid,
+      );
     } on Exception {
       yield state.copyWith(status: EditProfileStatus.failure);
     }
@@ -71,7 +72,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
     final firstName = FirstName.dirty(event.firstName);
 
     yield state.copyWith(
-        firstName: firstName, status: _status(firstName: firstName),);
+      firstName: firstName,
+      status: _status(firstName: firstName),
+    );
   }
 
   Stream<EditProfileState> _mapEditProfileLastNameChangedToState(
@@ -103,7 +106,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       }
 
       yield state.copyWith(
-          imageURL: file.path, status: _status(imageURL: file.path),);
+        imageURL: file.path,
+        status: _status(imageURL: file.path),
+      );
     } on Exception {
       yield state.copyWith(status: EditProfileStatus.failure);
     }
