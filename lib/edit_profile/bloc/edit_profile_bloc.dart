@@ -59,7 +59,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
           firstName: firstName,
           lastName: lastName,
           imageURL: image,
-          status: EditProfileStatus.invalid);
+          status: EditProfileStatus.invalid,);
     } on Exception {
       yield state.copyWith(status: EditProfileStatus.failure);
     }
