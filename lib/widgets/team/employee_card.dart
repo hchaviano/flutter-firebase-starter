@@ -1,28 +1,13 @@
+import 'package:firebasestarter/constants/assets.dart';
 import 'package:firebasestarter/constants/colors.dart';
 import 'package:firebasestarter/models/employee.dart';
 import 'package:firebasestarter/utils/screen_size.dart';
 import 'package:flutter/material.dart';
-import 'package:firebasestarter/constants/assets.dart';
 
-class EmployeesList extends StatelessWidget {
-  final List<Employee> employees;
-
-  const EmployeesList(this.employees);
-
-  @override
-  Widget build(BuildContext context) => ListView.builder(
-        padding: const EdgeInsets.fromLTRB(44.0, 22.0, 44.0, 0.0),
-        itemCount: employees?.length ?? 0,
-        itemBuilder: (BuildContext context, int i) => _EmployeeCard(
-          employees[i],
-        ),
-      );
-}
-
-class _EmployeeCard extends StatelessWidget {
+class EmployeeCard extends StatelessWidget {
   final Employee employee;
   final _screenSize = ScreenSize();
-  _EmployeeCard(this.employee);
+  EmployeeCard(this.employee);
 
   Size _cardSize(BuildContext context) => _screenSize.getSize(
         context: context,

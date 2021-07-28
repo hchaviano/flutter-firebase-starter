@@ -1,10 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:firebasestarter/home/home.dart';
 import 'package:firebasestarter/models/user.dart';
 import 'package:firebasestarter/user/user.dart';
 import 'package:firebasestarter/user_profile/user_profile.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -49,12 +47,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: mockUserBloc,
-            child: UserProfileScreen(
-              bottomNavigationBar: StarterBottomNavigationBar(
-                index: 0,
-                updateIndex: (_) {},
-              ),
-            ),
+            child: const UserProfileScreen(),
           ),
         );
 
@@ -76,12 +69,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: mockUserBloc,
-            child: UserProfileScreen(
-              bottomNavigationBar: StarterBottomNavigationBar(
-                index: 0,
-                updateIndex: (_) {},
-              ),
-            ),
+            child: const UserProfileScreen(),
           ),
         );
 
@@ -107,12 +95,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: mockUserBloc,
-            child: UserProfileScreen(
-              bottomNavigationBar: StarterBottomNavigationBar(
-                index: 0,
-                updateIndex: (_) {},
-              ),
-            ),
+            child: const UserProfileScreen(),
           ),
         );
 

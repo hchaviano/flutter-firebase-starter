@@ -106,12 +106,10 @@ class _FirstNameTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
     final firstName = context.select((SignUpBloc bloc) => bloc.state.firstName);
 
     return TextField(
       decoration: InputDecoration(
-        labelText: localizations.firstName,
         errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
         ),
@@ -131,12 +129,10 @@ class _LastNameTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
     final lastName = context.select((SignUpBloc bloc) => bloc.state.lastName);
 
     return TextField(
       decoration: InputDecoration(
-        labelText: localizations.lastName,
         errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
         ),
@@ -156,12 +152,10 @@ class _EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
     final email = context.select((SignUpBloc bloc) => bloc.state.email);
 
     return TextField(
       decoration: InputDecoration(
-        labelText: localizations.email,
         errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
         ),
@@ -179,13 +173,10 @@ class _PasswordTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
     final password = context.select((SignUpBloc bloc) => bloc.state.password);
 
     return TextField(
-      obscureText: true,
       decoration: InputDecoration(
-        labelText: localizations.password,
         errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
         ),
@@ -205,14 +196,11 @@ class _PasswordConfirmationTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
     final passwordConfirmation =
         context.select((SignUpBloc bloc) => bloc.state.password);
 
     return TextField(
-      obscureText: true,
       decoration: InputDecoration(
-        labelText: localizations.passwordConfirmation,
         errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
         ),
