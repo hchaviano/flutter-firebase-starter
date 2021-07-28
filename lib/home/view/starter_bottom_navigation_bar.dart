@@ -15,26 +15,18 @@ class StarterBottomNavigationBar extends StatelessWidget {
   final int index;
   final void Function(int) updateIndex;
 
-  Widget _item(int idx, IconData icon) {
-    final selectedIndex = idx == index;
-
-    return InkWell(
-      onTap: () {
-        updateIndex(idx);
-      },
-      child: SizedBox(
-        child: Icon(
-          icon,
-          color: selectedIndex ? AppColor.blue : AppColor.grey,
+  Widget _item(int idx, IconData icon) => InkWell(
+        onTap: () => updateIndex(idx),
+        child: SizedBox(
+          child: Icon(
+            icon,
+            color: idx == index ? AppColor.blue : AppColor.grey,
+          ),
         ),
-      ),
-    );
-  }
+      );
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: BottomAppBar(
+  Widget build(BuildContext context) => BottomAppBar(
         elevation: 0.0,
         child: Container(
           decoration: const BoxDecoration(
@@ -56,7 +48,5 @@ class StarterBottomNavigationBar extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

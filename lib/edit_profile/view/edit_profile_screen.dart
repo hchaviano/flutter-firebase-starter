@@ -64,7 +64,7 @@ class EditProfileScreen extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: const _AppBar(),
+        appBar: CustomAppBar(title: AppLocalizations.of(context).editProfile),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 44.0),
@@ -279,27 +279,6 @@ class _UpdateProfileButton extends StatelessWidget {
                   .read<EditProfileBloc>()
                   .add(const EditProfileInfoUpdated());
             },
-    );
-  }
-}
-
-class _AppBar extends CustomAppBar {
-  const _AppBar();
-
-  @override
-  Widget build(BuildContext context) {
-    final status = context.select((EditProfileBloc bloc) => bloc.state.status);
-
-    return CustomAppBar(
-      title: AppLocalizations.of(context).editProfile,
-      suffixWidget: status == EditProfileStatus.loading
-          ? const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              ),
-            )
-          : const SizedBox(),
     );
   }
 }
