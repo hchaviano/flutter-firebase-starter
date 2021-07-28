@@ -1,4 +1,3 @@
-import 'package:firebasestarter/constants/colors.dart';
 import 'package:firebasestarter/employees/employees.dart';
 import 'package:firebasestarter/home/home.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +32,5 @@ class HomeScreen extends StatelessWidget {
           context.read<HomeCubit>().updatePageIndex(newIndex);
         },
       ),
-    );
-  }
 }
+
