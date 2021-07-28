@@ -1,13 +1,16 @@
 import 'package:firebasestarter/constants/colors.dart';
 import 'package:firebasestarter/employees/employees.dart';
 import 'package:firebasestarter/widgets/common/app_bar.dart';
-import 'package:firebasestarter/widgets/team/employees_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmployeesScreen extends StatelessWidget {
-  const EmployeesScreen({Key key}) : super(key: key);
+  const EmployeesScreen({Key key, @required this.bottomNavigationBar})
+      : assert(bottomNavigationBar != null),
+        super(key: key);
+
+  final Widget bottomNavigationBar;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class EmployeesScreen extends StatelessWidget {
       body: const _EmployeesList(
         key: Key('employeesScreen_employeesList'),
       ),
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 }
