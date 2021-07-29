@@ -1,3 +1,5 @@
+part of auth;
+
 enum AuthError {
   invalidEmail,
   userDisabled,

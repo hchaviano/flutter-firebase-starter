@@ -1,5 +1,4 @@
-import 'package:firebasestarter/services/auth/auth.dart';
-import 'package:flutter/foundation.dart';
+part of auth;
 
 typedef BuildSignInService = ISignInService Function();
 

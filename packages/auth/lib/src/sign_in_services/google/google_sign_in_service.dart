@@ -1,7 +1,4 @@
-import 'package:firebasestarter/services/auth/auth.dart';
-import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
+part of auth;
 
 class GoogleSignInService implements ISignInService {
   GoogleSignInService({@required GoogleSignIn googleSignIn})

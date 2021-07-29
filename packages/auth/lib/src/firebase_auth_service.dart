@@ -1,7 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:firebasestarter/models/user.dart';
-import 'package:firebasestarter/services/auth/auth.dart';
-import 'package:flutter/foundation.dart';
+part of auth;
 
 class FirebaseAuthService implements AuthService {
   FirebaseAuthService({
@@ -15,7 +12,7 @@ class FirebaseAuthService implements AuthService {
   final auth.FirebaseAuth _firebaseAuth;
   final SignInServiceFactory _signInServiceFactory;
 
-  User _mapFirebaseUser(auth.User user) {
+  UserEntity _mapFirebaseUser(auth.User user) {
     if (user == null) {
       return null;
     }
@@ -35,20 +32,20 @@ class FirebaseAuthService implements AuthService {
       'phoneNumber': '',
       'address': '',
     };
-    return User.fromJson(map);
+    return UserEntity.fromJson(map);
   }
 
   @override
-  Stream<User> get onAuthStateChanged =>
+  Stream<UserEntity> get onAuthStateChanged =>
       _firebaseAuth.authStateChanges().map(_mapFirebaseUser);
 
   @override
-  Future<User> currentUser() async {
+  Future<UserEntity> currentUser() async {
     return _mapFirebaseUser(_firebaseAuth.currentUser);
   }
 
   @override
-  Future<User> signInAnonymously() async {
+  Future<UserEntity> signInAnonymously() async {
     try {
       final userCredential = await _firebaseAuth.signInAnonymously();
       return _mapFirebaseUser(userCredential.user);
@@ -58,7 +55,7 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<User> signInWithEmailAndPassword({
+  Future<UserEntity> signInWithEmailAndPassword({
     @required String email,
     @required String password,
   }) async {
@@ -78,7 +75,7 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<User> createUserWithEmailAndPassword({
+  Future<UserEntity> createUserWithEmailAndPassword({
     @required String name,
     @required String lastName,
     @required String email,
@@ -116,7 +113,7 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<User> signInWithSocialMedia({
+  Future<UserEntity> signInWithSocialMedia({
     @required SocialMediaMethod method,
   }) async {
     assert(method != null);
