@@ -12,30 +12,30 @@ import 'package:firebasestarter/services/storage/firebase_storage_service.dart';
 import 'package:firebasestarter/services/storage/storage_service.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get_it/get_it.dart';
-import 'package:firebase_auth/firebase_auth.dart' as Auth;
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:google_sign_in/google_sign_in.dart';
 
 final getIt = GetIt.instance;
 
 void initServices() {
-  final _firebaseAuth = Auth.FirebaseAuth.instance;
+  final _firebaseAuth = auth.FirebaseAuth.instance;
   final _serviceFactory = SignInServiceFactory();
 
   _serviceFactory.addService(
-    method: SocialMediaMethod.APPLE,
+    method: SocialMediaMethod.apple,
     constructor: () =>
         AppleSignInService(appleCredentials: const AppleCredentials()),
   );
 
   _serviceFactory.addService(
-    method: SocialMediaMethod.FACEBOOK,
+    method: SocialMediaMethod.facebook,
     constructor: () => FacebookSignInService(
       facebookAuth: FacebookAuth.instance,
     ),
   );
 
   _serviceFactory.addService(
-    method: SocialMediaMethod.GOOGLE,
+    method: SocialMediaMethod.google,
     constructor: () => GoogleSignInService(
       googleSignIn: GoogleSignIn(),
     ),

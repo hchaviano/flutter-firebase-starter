@@ -27,11 +27,11 @@ abstract class DialogHelper {
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.blueGrey),
               ),
+              onPressed: btnAction,
               child: Text(
                 btnText,
                 style: const TextStyle(color: Colors.white),
               ),
-              onPressed: btnAction,
             ),
             btnText2 != null
                 ? TextButton(
@@ -39,11 +39,11 @@ abstract class DialogHelper {
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.blueGrey),
                     ),
+                    onPressed: btnAction2,
                     child: Text(
                       btnText2,
                       style: const TextStyle(color: Colors.white),
                     ),
-                    onPressed: btnAction2,
                   )
                 : const SizedBox(
                     height: 0.0,

@@ -55,9 +55,9 @@ class SettingsScreen extends StatelessWidget {
                 onTap: () =>
                     context.read<LoginBloc>().add(const LogoutRequested()),
               ),
-              Margin(0.0, 200.0),
+              Margin(designWidth: 0.0, designHeight: 200.0),
               const AppVersion(),
-              Margin(0.0, 20.45),
+              Margin(designWidth: 0.0, designHeight: 20.45),
               SvgPicture.asset(
                 Assets.somnioGreyLogoSvg,
                 color: AppColor.grey,

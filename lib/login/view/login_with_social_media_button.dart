@@ -57,7 +57,7 @@ class LoginWithGoogleButton extends LoginWithSocialMediaButton {
   const LoginWithGoogleButton({Key key}) : super(key: key);
 
   @override
-  SocialMediaMethod get socialMediaMethod => SocialMediaMethod.GOOGLE;
+  SocialMediaMethod get socialMediaMethod => SocialMediaMethod.google;
 
   @override
   String get asset => Assets.googleLogo;
@@ -66,18 +66,13 @@ class LoginWithGoogleButton extends LoginWithSocialMediaButton {
   String text(BuildContext context) {
     return AppLocalizations.of(context).googleSignIn;
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return super.build(context);
-  }
 }
 
 class LoginWithFacebookButton extends LoginWithSocialMediaButton {
   const LoginWithFacebookButton({Key key}) : super(key: key);
 
   @override
-  SocialMediaMethod get socialMediaMethod => SocialMediaMethod.FACEBOOK;
+  SocialMediaMethod get socialMediaMethod => SocialMediaMethod.facebook;
 
   @override
   String get asset => Assets.facebookLogo;
@@ -86,18 +81,13 @@ class LoginWithFacebookButton extends LoginWithSocialMediaButton {
   String text(BuildContext context) {
     return AppLocalizations.of(context).facebookSignIn;
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return super.build(context);
-  }
 }
 
 class LoginWithAppleButton extends LoginWithSocialMediaButton {
   const LoginWithAppleButton({Key key}) : super(key: key);
 
   @override
-  SocialMediaMethod get socialMediaMethod => SocialMediaMethod.APPLE;
+  SocialMediaMethod get socialMediaMethod => SocialMediaMethod.apple;
 
   @override
   String get asset => Assets.appleLogo;
@@ -105,11 +95,6 @@ class LoginWithAppleButton extends LoginWithSocialMediaButton {
   @override
   String text(BuildContext context) {
     return AppLocalizations.of(context).appleIdSignIn;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return super.build(context);
   }
 }
 

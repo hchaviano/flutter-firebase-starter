@@ -70,11 +70,11 @@ class EditProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 44.0),
             child: Column(
               children: [
-                Margin(0.0, 60.0),
+                Margin(designWidth: 0.0, designHeight: 60.0),
                 const _ProfileImage(
                   key: Key('editProfileScreen_profileImage'),
                 ),
-                Margin(0.0, 45.0),
+                Margin(designWidth: 0.0, designHeight: 45.0),
                 const _EditProfileForm(
                   key: Key('editProfileScreen_form'),
                 ),
@@ -138,7 +138,7 @@ class _ProfileImage extends StatelessWidget {
                 onTap: () {
                   context.read<EditProfileBloc>().add(
                         const EditProfilePhotoUpdated(
-                          method: PhotoUploadMethod.CAMERA,
+                          method: PhotoUploadMethod.camera,
                         ),
                       );
                   Navigator.pop(context);
@@ -159,7 +159,7 @@ class _ProfileImage extends StatelessWidget {
                 onTap: () {
                   context.read<EditProfileBloc>().add(
                         const EditProfilePhotoUpdated(
-                          method: PhotoUploadMethod.GALLERY,
+                          method: PhotoUploadMethod.gallery,
                         ),
                       );
                   Navigator.of(context).pop();
@@ -195,13 +195,13 @@ class _EditProfileForm extends StatelessWidget {
                     'editProfileScreen_editProfileForm_firstNameTextField',
                   ),
                 ),
-                Margin(0.0, 20.0),
+                Margin(designWidth: 0.0, designHeight: 20.0),
                 const _LastNameTextField(
                   key: Key(
                     'editProfileScreen_editProfileForm_lastNameTextField',
                   ),
                 ),
-                Margin(0.0, 43.0),
+                Margin(designWidth: 0.0, designHeight: 43.0),
                 const _UpdateProfileButton(
                   key: Key('updateProfileScreen_editProfileForm_button'),
                 ),

@@ -1,21 +1,21 @@
-import 'package:firebase_auth/firebase_auth.dart' as Auth;
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebasestarter/models/user.dart';
 import 'package:firebasestarter/services/auth/auth.dart';
 import 'package:flutter/foundation.dart';
 
 class FirebaseAuthService implements AuthService {
   FirebaseAuthService({
-    @required Auth.FirebaseAuth authService,
+    @required auth.FirebaseAuth authService,
     @required SignInServiceFactory signInServiceFactory,
   })  : assert(authService != null),
         assert(signInServiceFactory != null),
         _firebaseAuth = authService,
         _signInServiceFactory = signInServiceFactory;
 
-  final Auth.FirebaseAuth _firebaseAuth;
+  final auth.FirebaseAuth _firebaseAuth;
   final SignInServiceFactory _signInServiceFactory;
 
-  User _mapFirebaseUser(Auth.User user) {
+  User _mapFirebaseUser(auth.User user) {
     if (user == null) {
       return null;
     }
@@ -52,7 +52,7 @@ class FirebaseAuthService implements AuthService {
     try {
       final userCredential = await _firebaseAuth.signInAnonymously();
       return _mapFirebaseUser(userCredential.user);
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
@@ -72,7 +72,7 @@ class FirebaseAuthService implements AuthService {
       );
 
       return _mapFirebaseUser(userCredential.user);
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
@@ -99,7 +99,7 @@ class FirebaseAuthService implements AuthService {
       await userCredential.user.reload();
 
       return _mapFirebaseUser(_firebaseAuth.currentUser);
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
@@ -110,7 +110,7 @@ class FirebaseAuthService implements AuthService {
 
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
@@ -134,7 +134,7 @@ class FirebaseAuthService implements AuthService {
       }
 
       return null;
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
@@ -146,7 +146,7 @@ class FirebaseAuthService implements AuthService {
 
       await service?.signOut();
       await _firebaseAuth.signOut();
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
@@ -167,7 +167,7 @@ class FirebaseAuthService implements AuthService {
         await user.updatePhotoURL(photoURL);
       }
       return true;
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
@@ -177,33 +177,33 @@ class FirebaseAuthService implements AuthService {
     try {
       final user = _firebaseAuth.currentUser;
       await user.delete();
-    } on Auth.FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       throw _determineError(e);
     }
   }
 
-  AuthError _determineError(Auth.FirebaseAuthException exception) {
+  AuthError _determineError(auth.FirebaseAuthException exception) {
     switch (exception.code) {
       case 'invalid-email':
-        return AuthError.INVALID_EMAIL;
+        return AuthError.invalidEmail;
       case 'user-disabled':
-        return AuthError.USER_DISABLED;
+        return AuthError.userDisabled;
       case 'user-not-found':
-        return AuthError.USER_NOT_FOUND;
+        return AuthError.userNotFound;
       case 'wrong-password':
-        return AuthError.WRONG_PASSWORD;
+        return AuthError.wrongPassword;
       case 'email-already-in-use':
       case 'account-exists-with-different-credential':
-        return AuthError.EMAIL_ALREADY_IN_USE;
+        return AuthError.emailAlreadyInUse;
       case 'invalid-credential':
-        return AuthError.INVALID_CREDENTIAL;
+        return AuthError.invalidCredential;
       case 'operation-not-allowed':
-        return AuthError.OPERATION_NOT_ALLOWED;
+        return AuthError.operationNotAllowed;
       case 'weak-password':
-        return AuthError.WEAK_PASSWORD;
+        return AuthError.weakPassword;
       case 'ERROR_MISSING_GOOGLE_AUTH_TOKEN':
       default:
-        return AuthError.ERROR;
+        return AuthError.error;
     }
   }
 }

@@ -50,7 +50,7 @@ class StarterBottomNavigationBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _item(0, Feather.home),
-                Margin(150.0, 0.0),
+                Margin(designWidth: 150.0, designHeight: 0.0),
                 _item(1, Feather.user),
               ],
             ),

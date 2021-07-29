@@ -5,14 +5,20 @@ class CustomAppBar extends PreferredSize {
   final double height;
   final bool goBack;
   final String title;
+  final Widget barChild;
   final Widget suffixWidget;
 
   const CustomAppBar({
+    Key key,
     this.height = kToolbarHeight,
     this.title,
+    this.barChild,
     this.goBack = true,
     this.suffixWidget,
-  });
+  }) : super(
+            key: key,
+            child: barChild,
+            preferredSize: const Size.fromHeight(kToolbarHeight));
 
   @override
   Size get preferredSize => Size.fromHeight(height);

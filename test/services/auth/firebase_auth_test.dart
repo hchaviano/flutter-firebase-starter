@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebasestarter/models/user.dart' as Model;
+import 'package:firebasestarter/models/user.dart' as model;
 import 'package:firebasestarter/services/auth/auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -15,7 +15,7 @@ class MockOAuthCredential extends Mock implements OAuthCredential {}
 class MockFirebaseUser extends Mock implements User {}
 
 // ignore: must_be_immutable
-class MockModelUser extends Mock implements Model.User {}
+class MockModelUser extends Mock implements model.User {}
 
 // ignore: must_be_immutable
 class MockFirebaseAuthException extends Mock implements FirebaseAuthException {}
@@ -33,7 +33,7 @@ void main() {
 
     UserCredential mockUserCredential;
     OAuthCredential mockOAuthCredential;
-    Model.User mockModelUser;
+    model.User mockModelUser;
     User mockFirebaseUser;
 
     setUp(() {
@@ -106,7 +106,7 @@ void main() {
 
         expect(
           subject.signInAnonymously(),
-          throwsA(AuthError.ERROR),
+          throwsA(AuthError.error),
         );
       });
     });
@@ -173,7 +173,7 @@ void main() {
               email: email,
               password: password,
             ),
-            throwsA(AuthError.EMAIL_ALREADY_IN_USE),
+            throwsA(AuthError.emailAlreadyInUse),
           );
         },
       );
@@ -275,7 +275,7 @@ void main() {
               email: email,
               password: password,
             ),
-            throwsA(AuthError.EMAIL_ALREADY_IN_USE),
+            throwsA(AuthError.emailAlreadyInUse),
           );
         },
       );
@@ -306,13 +306,13 @@ void main() {
 
         expect(
           subject.sendPasswordResetEmail(email: email),
-          throwsA(AuthError.USER_NOT_FOUND),
+          throwsA(AuthError.userNotFound),
         );
       });
     });
 
     group('.signInWithSocialMedia', () {
-      const method = SocialMediaMethod.GOOGLE;
+      const method = SocialMediaMethod.google;
 
       test('throwsAssertionError when method is null', () {
         expect(
@@ -348,7 +348,7 @@ void main() {
 
         expect(
           subject.signInWithSocialMedia(method: method),
-          throwsA(AuthError.INVALID_CREDENTIAL),
+          throwsA(AuthError.invalidCredential),
         );
       });
 
@@ -366,7 +366,7 @@ void main() {
 
         expect(
           subject.signInWithSocialMedia(method: method),
-          throwsA(AuthError.INVALID_CREDENTIAL),
+          throwsA(AuthError.invalidCredential),
         );
       });
     });
@@ -416,7 +416,7 @@ void main() {
               lastName: lastName,
               photoURL: photoURL,
             ),
-            throwsA(AuthError.ERROR),
+            throwsA(AuthError.error),
           );
         },
       );
@@ -435,7 +435,7 @@ void main() {
               lastName: lastName,
               photoURL: photoURL,
             ),
-            throwsA(AuthError.ERROR),
+            throwsA(AuthError.error),
           );
         },
       );
@@ -452,7 +452,7 @@ void main() {
 
         expect(
           subject.deleteAccount(),
-          throwsA(AuthError.ERROR),
+          throwsA(AuthError.error),
         );
       });
     });

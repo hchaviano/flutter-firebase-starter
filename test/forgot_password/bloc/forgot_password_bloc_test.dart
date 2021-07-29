@@ -136,7 +136,7 @@ void main() {
         build: () {
           when(
             mockAuthService.sendPasswordResetEmail(email: validEmail.value),
-          ).thenThrow(AuthError.ERROR);
+          ).thenThrow(AuthError.error);
 
           return ForgotPasswordBloc(authService: mockAuthService);
         },

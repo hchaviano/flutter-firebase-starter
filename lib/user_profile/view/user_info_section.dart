@@ -22,19 +22,19 @@ class UserInfoSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Margin(0.0, 30.0),
+          Margin(designWidth: 0.0, designHeight: 30.0),
           UserProfileImage(image: user.imageUrl),
-          Margin(0.0, 43.0),
+          Margin(designWidth: 0.0, designHeight: 43.0),
           _UserInfoItem(
             title: localizations.firstName,
             data: user.firstName,
           ),
-          Margin(0.0, 10.0),
+          Margin(designWidth: 0.0, designHeight: 10.0),
           _UserInfoItem(
             title: localizations.lastName,
             data: user.lastName,
           ),
-          Margin(0.0, 10.0),
+          Margin(designWidth: 0.0, designHeight: 10.0),
           _UserInfoItem(
             title: localizations.email,
             data: user.email,
@@ -73,7 +73,7 @@ class _UserInfoItem extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Margin(0.0, 6.0),
+          Margin(designWidth: 0.0, designHeight: 6.0),
           Text(
             data,
             style: const TextStyle(

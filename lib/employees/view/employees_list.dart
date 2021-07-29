@@ -7,7 +7,7 @@ import 'package:firebasestarter/constants/assets.dart';
 class EmployeesList extends StatelessWidget {
   final List<Employee> employees;
 
-  const EmployeesList(this.employees);
+  const EmployeesList({Key key, this.employees}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => ListView.builder(
@@ -67,8 +67,8 @@ class _EmployeeCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColor.white,
           borderRadius: BorderRadius.circular(5.0),
-          boxShadow: <BoxShadow>[
-            const BoxShadow(
+          boxShadow: const <BoxShadow>[
+            BoxShadow(
               color: Colors.black12,
               offset: Offset(0.0, 5.0),
               blurRadius: 3.0,

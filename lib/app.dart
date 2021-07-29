@@ -76,13 +76,13 @@ class _FirebaseStarterState extends State<FirebaseStarter> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: DetermineAccessScreen(),
+      home: const DetermineAccessScreen(),
       navigatorObservers: [
         FirebaseAnalyticsObserver(
           analytics: GetIt.I.get<AnalyticsService>().getService(),

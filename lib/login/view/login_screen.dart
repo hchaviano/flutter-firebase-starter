@@ -61,28 +61,28 @@ class LoginScreen extends StatelessWidget {
     var message = 'Error: ';
     final _appLocalizations = AppLocalizations.of(context);
     switch (error) {
-      case AuthError.INVALID_EMAIL:
+      case AuthError.invalidEmail:
         message += _appLocalizations.invalidEmail;
         break;
-      case AuthError.USER_DISABLED:
+      case AuthError.userDisabled:
         message += _appLocalizations.userDisabled;
         break;
-      case AuthError.USER_NOT_FOUND:
+      case AuthError.userNotFound:
         message += _appLocalizations.userNotFound;
         break;
-      case AuthError.WRONG_PASSWORD:
+      case AuthError.wrongPassword:
         message += _appLocalizations.wrongPassword;
         break;
-      case AuthError.EMAIL_ALREADY_IN_USE:
+      case AuthError.emailAlreadyInUse:
         message += _appLocalizations.emailAlreadyInUse;
         break;
-      case AuthError.INVALID_CREDENTIAL:
+      case AuthError.invalidCredential:
         message += _appLocalizations.invalidCredential;
         break;
-      case AuthError.OPERATION_NOT_ALLOWED:
+      case AuthError.operationNotAllowed:
         message += _appLocalizations.operationNotAllowed;
         break;
-      case AuthError.WEAK_PASSWORD:
+      case AuthError.weakPassword:
         message += _appLocalizations.weakPassword;
         break;
       default:
@@ -104,7 +104,7 @@ class _LoginForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Margin(0, 47.0),
+            Margin(designWidth: 0, designHeight: 47.0),
             InkWell(
               onTap: () {
                 Navigator.of(context).push(SignUpScreen.route());
@@ -128,23 +128,23 @@ class _LoginForm extends StatelessWidget {
                 ],
               ),
             ),
-            Margin(0, 12.0),
+            Margin(designWidth: 0, designHeight: 12.0),
             const _EmailTextField(
               key: Key('loginScreen_loginForm_emailTextField'),
             ),
-            Margin(0, 20.0),
+            Margin(designWidth: 0, designHeight: 20.0),
             const _PasswordTextField(
               key: Key('loginScreen_loginForm_passwordTextField'),
             ),
-            Margin(0, 27.5),
+            Margin(designWidth: 0, designHeight: 27.5),
             const _ForgotPasswordButton(
               key: Key('loginScreen_loginForm_forgotPasswordButton'),
             ),
-            Margin(0, 21.0),
+            Margin(designWidth: 0, designHeight: 21.0),
             const _LoginButton(
               key: Key('loginScreen_loginForm_loginButton'),
             ),
-            Margin(0, 26.0),
+            Margin(designWidth: 0, designHeight: 26.0),
             Center(
               child: SizedBox(
                 height: 20.0,
@@ -180,23 +180,23 @@ class _LoginForm extends StatelessWidget {
                 ),
               ),
             ),
-            Margin(0, 20.0),
+            Margin(designWidth: 0, designHeight: 20.0),
             const LoginWithGoogleButton(
               key: Key('loginScreen_loginForm_loginWithGoogleButton'),
             ),
-            Margin(0.0, 14.0),
+            Margin(designWidth: 0.0, designHeight: 14.0),
             const LoginWithFacebookButton(
               key: Key('loginScreen_loginForm_loginWithFacebookButton'),
             ),
-            Margin(0.0, 14.0),
+            Margin(designWidth: 0.0, designHeight: 14.0),
             const LoginWithAppleButton(
               key: Key('loginScreen_loginForm_loginWithAppleButton'),
             ),
-            Margin(0.0, 14.0),
+            Margin(designWidth: 0.0, designHeight: 14.0),
             const LoginAnonymouslyButton(
               key: Key('loginScreen_loginForm_loginAnonymouslyButton'),
             ),
-            Margin(0, 40.0),
+            Margin(designWidth: 0, designHeight: 40.0),
           ],
         ),
       ),

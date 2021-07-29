@@ -69,31 +69,31 @@ class _SignUpForm extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 44.0),
         child: Column(
           children: [
-            Margin(0.0, 71.0),
+            Margin(designWidth: 0.0, designHeight: 71.0),
             const _FirstNameTextField(
               key: Key('signUpScreen_signUpForm_firstNameTextField'),
             ),
-            Margin(0.0, 20.5),
+            Margin(designWidth: 0.0, designHeight: 20.5),
             const _LastNameTextField(
               key: Key('signUpScreen_signUpForm_lastNameTextField'),
             ),
-            Margin(0.0, 20.5),
+            Margin(designWidth: 0.0, designHeight: 20.5),
             const _EmailTextField(
               key: Key('signUpScreen_signUpForm_emailTextField'),
             ),
-            Margin(0.0, 20.5),
+            Margin(designWidth: 0.0, designHeight: 20.5),
             const _PasswordTextField(
               key: Key('signUpScreen_signUpForm_passwordTextField'),
             ),
-            Margin(0.0, 20.5),
+            Margin(designWidth: 0.0, designHeight: 20.5),
             const _PasswordConfirmationTextField(
               key: Key('signUpScreen_signUpForm_passwordConfirmationTextField'),
             ),
-            Margin(0.0, 49.5),
+            Margin(designWidth: 0.0, designHeight: 49.5),
             const _SignUpTextButton(
               key: Key('signUpScreen_signUpForm_signUpTextButton'),
             ),
-            Margin(0.0, 49.5),
+            Margin(designWidth: 0.0, designHeight: 49.5),
           ],
         ),
       ),

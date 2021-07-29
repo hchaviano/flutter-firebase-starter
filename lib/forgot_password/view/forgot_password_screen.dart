@@ -62,11 +62,11 @@ class _ForgotPasswordForm extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Margin(0.0, 131.0),
+          Margin(designWidth: 0.0, designHeight: 131.0),
           const _EmailTextField(
             key: Key('forgotPasswordScreen_form_emailTextField'),
           ),
-          Margin(0.0, 41.0),
+          Margin(designWidth: 0.0, designHeight: 41.0),
           const _ForgotPasswordTextButton(
             key: Key('forgotPasswordScreen_form_forgotPasswordButton'),
           ),
@@ -116,7 +116,6 @@ class _ForgotPasswordTextButton extends StatelessWidget {
             ? MaterialStateProperty.all(Colors.grey)
             : MaterialStateProperty.all(Colors.blue),
       ),
-      child: Text(localizations.send),
       onPressed: isNotValid
           ? null
           : () {
@@ -124,6 +123,7 @@ class _ForgotPasswordTextButton extends StatelessWidget {
                   .read<ForgotPasswordBloc>()
                   .add(const ForgotPasswordResetRequested());
             },
+      child: Text(localizations.send),
     );
   }
 }

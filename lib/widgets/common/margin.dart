@@ -6,7 +6,7 @@ class Margin extends StatelessWidget {
   final double designWidth;
   final _screenSize = ScreenSize();
 
-  Margin(this.designWidth, this.designHeight);
+  Margin({Key key, this.designWidth, this.designHeight}) : super(key: key);
 
   Size _getSize(BuildContext context) => _screenSize.getSize(
         context: context,

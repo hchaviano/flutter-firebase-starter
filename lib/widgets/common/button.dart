@@ -17,6 +17,7 @@ class Button extends StatelessWidget {
       );
 
   const Button({
+    Key key,
     this.child,
     this.text,
     this.onTap,
@@ -24,7 +25,7 @@ class Button extends StatelessWidget {
     this.width,
     this.backgroundColor,
     this.textColor,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => InkWell(

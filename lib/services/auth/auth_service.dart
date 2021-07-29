@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:firebasestarter/models/user.dart';
 import 'package:flutter/foundation.dart';
 
-enum SocialMediaMethod { GOOGLE, FACEBOOK, APPLE }
+enum SocialMediaMethod { google, facebook, apple }
 
 abstract class AuthService {
   Stream<User> get onAuthStateChanged;

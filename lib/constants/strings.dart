@@ -16,7 +16,7 @@ class Strings {
 
   //Create Account Screen
   static const firstName = 'First Name';
-  static const passwordConfirmation = 'Confirm' + ' ' + password;
+  static const passwordConfirmation = 'Confirm $password';
   static const createAccount = 'Create Account';
 
   //Main Screen

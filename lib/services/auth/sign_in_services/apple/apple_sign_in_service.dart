@@ -1,10 +1,9 @@
-import 'package:firebase_auth_platform_interface/src/providers/oauth.dart';
 import 'dart:convert';
 import 'dart:math';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:firebase_auth/firebase_auth.dart' as Auth;
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 import '../../auth.dart';
 import 'apple_credentials.dart';
@@ -40,21 +39,21 @@ class AppleSignInService implements ISignInService {
   }
 
   /// Creates a Firebase credential
-  Auth.OAuthCredential _createCredential({
+  auth.OAuthCredential _createCredential({
     @required idToken,
     @required rawToken,
   }) {
     assert(idToken != null);
     assert(rawToken != null);
 
-    return Auth.OAuthProvider(_authProvider).credential(
+    return auth.OAuthProvider(_authProvider).credential(
       idToken: idToken,
       rawNonce: rawToken,
     );
   }
 
   @override
-  Future<OAuthCredential> getFirebaseCredential() async {
+  Future<auth.OAuthCredential> getFirebaseCredential() async {
     final rawToken = _generateRawRandomToken();
     final token = _rawTokenToSha256(rawToken: rawToken);
 
@@ -72,7 +71,7 @@ class AppleSignInService implements ISignInService {
         rawToken: rawToken,
       );
     } on Exception {
-      throw Auth.FirebaseAuthException(code: 'ERROR_APPLE_LOGIN');
+      throw auth.FirebaseAuthException(code: 'ERROR_APPLE_LOGIN');
     }
   }
 
