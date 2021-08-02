@@ -1,3 +1,4 @@
+import 'package:firebase_starter_ui/firebase_starter_ui.dart';
 import 'package:flutter/material.dart';
 
 abstract class DialogHelper {
@@ -16,7 +17,7 @@ abstract class DialogHelper {
           title: Text(
             story,
             style: const TextStyle(
-              color: Colors.black,
+              color: FSColors.black,
               fontSize: 14,
             ),
           ),
@@ -25,24 +26,24 @@ abstract class DialogHelper {
             TextButton(
               style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.blueGrey),
+                    MaterialStateProperty.all<Color>(FSColors.blueGrey),
               ),
               onPressed: btnAction,
               child: Text(
                 btnText,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: FSColors.white),
               ),
             ),
             btnText2 != null
                 ? TextButton(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blueGrey),
+                          MaterialStateProperty.all<Color>(FSColors.blueGrey),
                     ),
                     onPressed: btnAction2,
                     child: Text(
                       btnText2,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: FSColors.white),
                     ),
                   )
                 : const SizedBox(

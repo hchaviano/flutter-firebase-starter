@@ -1,7 +1,6 @@
 import 'package:auth/auth.dart';
-import 'package:firebasestarter/constants/assets.dart';
+import 'package:firebase_starter_ui/firebase_starter_ui.dart';
 import 'package:firebasestarter/login/login.dart';
-import 'package:firebasestarter/widgets/common/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -23,9 +22,13 @@ abstract class LoginWithSocialMediaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Button(
-      onTap: () => _onTap(context),
-      backgroundColor: Colors.white,
+    return FSTextButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(FSColors.white),
+      ),
+      onPressed: () {
+        _onTap(context);
+      },
       child: Row(
         children: [
           const Padding(
@@ -44,7 +47,7 @@ abstract class LoginWithSocialMediaButton extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.w400,
-              color: Colors.black,
+              color: FSColors.black,
             ),
           ),
         ],
@@ -60,7 +63,7 @@ class LoginWithGoogleButton extends LoginWithSocialMediaButton {
   SocialMediaMethod get socialMediaMethod => SocialMediaMethod.google;
 
   @override
-  String get asset => Assets.googleLogo;
+  String get asset => FSAssetImage.googleLogo;
 
   @override
   String text(BuildContext context) {
@@ -75,7 +78,7 @@ class LoginWithFacebookButton extends LoginWithSocialMediaButton {
   SocialMediaMethod get socialMediaMethod => SocialMediaMethod.facebook;
 
   @override
-  String get asset => Assets.facebookLogo;
+  String get asset => FSAssetImage.facebookLogo;
 
   @override
   String text(BuildContext context) {
@@ -90,7 +93,7 @@ class LoginWithAppleButton extends LoginWithSocialMediaButton {
   SocialMediaMethod get socialMediaMethod => SocialMediaMethod.apple;
 
   @override
-  String get asset => Assets.appleLogo;
+  String get asset => FSAssetImage.appleLogo;
 
   @override
   String text(BuildContext context) {
@@ -105,18 +108,20 @@ class LoginAnonymouslyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context);
 
-    return Button(
-      onTap: () {
+    return FSTextButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(FSColors.white),
+      ),
+      onPressed: () {
         context.read<LoginBloc>().add(const LoginAnonymouslyRequested());
       },
-      backgroundColor: Colors.white,
       child: Row(
         children: [
           const Padding(
             padding: EdgeInsets.only(left: 15.0),
           ),
           const Image(
-            image: AssetImage(Assets.anonLogin),
+            image: AssetImage(FSAssetImage.anonLogin),
             height: 30.0,
             width: 30.0,
           ),
@@ -128,7 +133,7 @@ class LoginAnonymouslyButton extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.w400,
-              color: Colors.black,
+              color: FSColors.black,
             ),
           ),
         ],

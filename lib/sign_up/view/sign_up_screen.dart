@@ -1,9 +1,9 @@
 import 'package:auth/auth.dart';
+import 'package:firebase_starter_ui/firebase_starter_ui.dart';
 import 'package:firebasestarter/home/home.dart';
 import 'package:firebasestarter/sign_up/sign_up.dart';
 import 'package:firebasestarter/user/user.dart';
-import 'package:firebasestarter/widgets/common/app_bar.dart';
-import 'package:firebasestarter/widgets/common/margin.dart';
+import 'package:firebasestarter/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebasestarter/utils/dialog.dart';
@@ -68,32 +68,32 @@ class _SignUpForm extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 44.0),
         child: Column(
-          children: [
-            Margin(designWidth: 0.0, designHeight: 71.0),
-            const _FirstNameTextField(
+          children: const [
+            SizedBox(height: 71.0),
+            _FirstNameTextField(
               key: Key('signUpScreen_signUpForm_firstNameTextField'),
             ),
-            Margin(designWidth: 0.0, designHeight: 20.5),
-            const _LastNameTextField(
+            SizedBox(height: 20.5),
+            _LastNameTextField(
               key: Key('signUpScreen_signUpForm_lastNameTextField'),
             ),
-            Margin(designWidth: 0.0, designHeight: 20.5),
-            const _EmailTextField(
+            SizedBox(height: 20.5),
+            _EmailTextField(
               key: Key('signUpScreen_signUpForm_emailTextField'),
             ),
-            Margin(designWidth: 0.0, designHeight: 20.5),
-            const _PasswordTextField(
+            SizedBox(height: 20.5),
+            _PasswordTextField(
               key: Key('signUpScreen_signUpForm_passwordTextField'),
             ),
-            Margin(designWidth: 0.0, designHeight: 20.5),
-            const _PasswordConfirmationTextField(
+            SizedBox(height: 20.5),
+            _PasswordConfirmationTextField(
               key: Key('signUpScreen_signUpForm_passwordConfirmationTextField'),
             ),
-            Margin(designWidth: 0.0, designHeight: 49.5),
-            const _SignUpTextButton(
+            SizedBox(height: 49.5),
+            _SignUpTextButton(
               key: Key('signUpScreen_signUpForm_signUpTextButton'),
             ),
-            Margin(designWidth: 0.0, designHeight: 49.5),
+            SizedBox(height: 49.5),
           ],
         ),
       ),
@@ -113,7 +113,7 @@ class _FirstNameTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: localizations.firstName,
         errorBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: FSColors.red),
         ),
         errorText: firstName.valid ? null : 'Invalid first name',
       ),
@@ -138,7 +138,7 @@ class _LastNameTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: localizations.lastName,
         errorBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: FSColors.red),
         ),
         errorText: lastName.valid ? null : 'Invalid last name',
       ),
@@ -163,7 +163,7 @@ class _EmailTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: localizations.email,
         errorBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: FSColors.red),
         ),
         errorText: email.valid ? null : 'Invalid email',
       ),
@@ -187,7 +187,7 @@ class _PasswordTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: localizations.password,
         errorBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: FSColors.red),
         ),
         errorText: password.valid ? null : 'Weak password',
       ),
@@ -214,7 +214,7 @@ class _PasswordConfirmationTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: localizations.passwordConfirmation,
         errorBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: FSColors.red),
         ),
         errorText: passwordConfirmation.valid ? null : 'Weak password',
       ),
@@ -237,7 +237,7 @@ class _SignUpTextButton extends StatelessWidget {
     final localizations = AppLocalizations.of(context);
     final status = context.select((SignUpBloc bloc) => bloc.state.status);
 
-    return TextButton(
+    return FSTextButton(
       onPressed: status != SignUpStatus.valid
           ? null
           : () {
@@ -246,7 +246,7 @@ class _SignUpTextButton extends StatelessWidget {
       child: Text(
         localizations.createAccount,
         style: TextStyle(
-          color: status != SignUpStatus.valid ? Colors.grey : Colors.blue,
+          color: status != SignUpStatus.valid ? FSColors.grey : FSColors.blue,
         ),
       ),
     );
